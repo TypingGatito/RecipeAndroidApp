@@ -107,3 +107,8 @@ nb-configuration.xml
 .externalNativeBuild
 .cxx
 local.properties
+
+##############################
+## draw.io
+##############################
+*.bkp
