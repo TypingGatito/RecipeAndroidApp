@@ -4,13 +4,16 @@ import com.shoe_store.models.Recipe;
 import com.shoe_store.models.User;
 import com.shoe_store.repositories.recipe.IRecipeRepository;
 import com.shoe_store.repositories.user.IUserRepository;
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
+@RequiredArgsConstructor
 public class UserService {
 
-    IUserRepository userRepository;
+    private final IUserRepository userRepository;
 
-    IRecipeRepository recipeRepository;
+    private final IRecipeRepository recipeRepository;
 
     public Boolean login(String email, String password) {
         User user = userRepository.findUserByEmail(email);
