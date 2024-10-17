@@ -15,4 +15,8 @@ public class StepService {
         return stepRepository.findRecipeSteps(recipeId);
     }
 
+    public Boolean addStep(Step step) {
+        return stepRepository.addStep(step);
+    }
+
 }

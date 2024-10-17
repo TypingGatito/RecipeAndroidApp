@@ -11,7 +11,7 @@ public class RecipeService {
 
     private final IRecipeRepository recipeRepository;
 
-    public Recipe getRecipeById(Long id) {
+    public Recipe findRecipeById(Long id) {
         return recipeRepository.getRecipeById(id);
     }
 
@@ -39,6 +39,18 @@ public class RecipeService {
         return recipeRepository.findFavoriteRecipesOfUser(userId)
                 .stream()
                 .anyMatch(recipe -> recipeId.equals(recipe.getId()));
+    }
+
+    public List<Recipe> findRecipesByUserId(Long id) {
+        return recipeRepository.findRecipesByUserId(id);
+    }
+
+    public void removeRecipe(Long recipeId) {
+        recipeRepository.removeRecipe(recipeId);
+    }
+
+    public Boolean addRecipe(Recipe recipe) {
+        return recipeRepository.addRecipe(recipe);
     }
 
 }

@@ -11,12 +11,20 @@ public class CommentaryService {
 
     private final ICommentaryRepository commentaryRepository;
 
-    public Boolean deleteCommentary(Long stepId, Long userId) {
-        return commentaryRepository.deleteCommentary(stepId, userId);
+    public Boolean deleteCommentary(Long stepId, Long userId, Integer order_num) {
+        return commentaryRepository.deleteCommentary(stepId, userId, order_num);
     }
 
     public List<Commentary> findUserStepCommentaries(Long userId, Long stepId) {
         return commentaryRepository.findUserStepCommentaries(userId, stepId);
+    }
+
+    public Boolean addCommentary(Commentary commentary) {
+        return commentaryRepository.addCommentary(commentary);
+    }
+
+    public Boolean updateCommentary(Commentary commentary) {
+        return commentaryRepository.updateCommentary(commentary);
     }
 
 }

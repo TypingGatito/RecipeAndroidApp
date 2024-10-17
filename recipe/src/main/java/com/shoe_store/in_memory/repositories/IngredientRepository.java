@@ -1,6 +1,7 @@
 package com.shoe_store.in_memory.repositories;
 
 import com.shoe_store.in_memory.db.InMemoryInfo;
+import com.shoe_store.models.Commentary;
 import com.shoe_store.models.Ingredient;
 import com.shoe_store.repositories.IIngredientRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +40,16 @@ public final class IngredientRepository implements IIngredientRepository {
     @Override
     public Boolean deleteById(Long id) {
         return null;
+    }
+
+    @Override
+    public void addIngredient(Ingredient ingredient) {
+        ingredient.setId(inMemoryInfo.getIngredients()
+                .stream()
+                .mapToLong(Ingredient::getId)
+                .max()
+                .orElse(0) + 1);
+        inMemoryInfo.getIngredients().add(ingredient);
     }
 
 }

@@ -19,13 +19,11 @@ public class RecipesListPage implements Page {
 
     private final StateInfo stateInfo;
 
-    List<Recipe> recipes;
+    private List<Recipe> recipes;
 
     @Override
     public void display() {
         menu.display();
-
-        System.out.println("Введите номер блюда в формате ({номер}d)");
 
         Map<String, String> stringParams = stateInfo.getStringParams();
 
@@ -39,19 +37,25 @@ public class RecipesListPage implements Page {
 
         if (stringParams.get("Type").equals("ALL")) {
             recipes = recipeService.findAllRecipes();
-            recipes.forEach(recipePrinter);
         }
 
         if (stringParams.get("Type").equals("FAV")) {
             recipes = recipeService.findFavoriteRecipesOfUser(stateInfo.getUser().getId());
-            recipes.forEach(recipePrinter);
         }
 
         if (stringParams.get("Type").equals("SEC")) {
             long sec = Long.parseLong(stringParams.get("SEC"));
             recipes = recipeService.findRecipesBySectionId(sec);
-            recipes.forEach(recipePrinter);
         }
+
+        if (stringParams.get("Type").equals("USER")) {
+            long userId = stateInfo.getUser().getId();
+            recipes = recipeService.findRecipesByUserId(userId);
+        }
+
+        recipes.forEach(recipePrinter);
+
+        printCommands();
     }
 
     @Override
@@ -64,6 +68,12 @@ public class RecipesListPage implements Page {
 
         chooseRecipe(stateInfo);
 
+        if (stateInfo.getNewState() != null) {
+            return stateInfo;
+        }
+
+        deleteRecipe(stateInfo);
+
         if (stateInfo.getNewState() == null) {
             return this.stateInfo;
         }
@@ -71,12 +81,18 @@ public class RecipesListPage implements Page {
         return stateInfo;
     }
 
+    private void printCommands() {
+        System.out.println("Посмотреть блюдо ({номер}d)");
+        if (stateInfo.getStringParams().get("Type").equals("USER")) {
+            System.out.println("Удалить блюдо ({номер}r)");
+        }
+    }
+
     private void chooseRecipe(StateInfo info) {
         Long recipeId;
         try {
             recipeId = Long.parseLong(info.getStringParams().get("Choice").strip().split("d")[0]);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Неверный ввод");
             info.setNewState(null);
             return;
         }
@@ -97,6 +113,34 @@ public class RecipesListPage implements Page {
 
     }
 
+    private void deleteRecipe(StateInfo info) {
+        if (!info.getStringParams().get("Type").equals("USER")) {
+            return;
+        }
+        Long recipeId;
+        try {
+            recipeId = Long.parseLong(info.getStringParams().get("Choice").strip().split("r")[0]);
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Неверный ввод");
+            info.setNewState(null);
+            return;
+        }
+
+        Recipe recipe = recipes
+                .stream()
+                .filter(u -> u.getId().equals(recipeId))
+                .findFirst()
+                .orElse(null);
+
+        if (recipe != null) {
+            recipeService.removeRecipe(recipeId);
+            info.setNewState(null);
+        } else {
+            System.out.println("Блюдо не найдено");
+        }
+
+    }
+
     private String title() {
         if (!stateInfo.getStringParams().containsKey("Type")) {
             return "Блюда";
@@ -106,6 +150,7 @@ public class RecipesListPage implements Page {
             case "ALL" -> "Все блюда";
             case "FAV" -> "Избранное";
             case "SEC" -> stateInfo.getStringParams().get("SEC_NAME");
+            case "USER" -> "Ваши блюда";
             default -> "Блюда";
         };
 

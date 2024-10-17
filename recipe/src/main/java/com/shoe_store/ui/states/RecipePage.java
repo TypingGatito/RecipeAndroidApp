@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.Duration;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 @RequiredArgsConstructor
@@ -34,7 +36,7 @@ public class RecipePage implements Page {
     public void display() {
         menu.display();
 
-        recipe = recipeService.getRecipeById(Long.parseLong(stateInfo.getStringParams().get("ID")));
+        recipe = recipeService.findRecipeById(Long.parseLong(stateInfo.getStringParams().get("ID")));
 
         System.out.println(recipe.getName());
 
@@ -60,6 +62,10 @@ public class RecipePage implements Page {
 
         addToFavourite(input);
 
+        editCommentary(input);
+
+        editRecipe(input);
+
         if (input.getNewState() == null) return stateInfo;
         return input;
     }
@@ -70,6 +76,11 @@ public class RecipePage implements Page {
         else
             System.out.println("f-добавить в избранное");
         System.out.println("r-оценить");
+        System.out.println("{номер шага}c-добавить комментарий");
+        System.out.println("{номер шага}c{номер комментария}r-редактировать комментарий");
+        if (recipe.getUserId().equals(stateInfo.getUser().getId())) {
+            System.out.println("e-редактировать");
+        }
     }
 
     private void printSteps() {
@@ -172,4 +183,66 @@ public class RecipePage implements Page {
         }
     }
 
+    private void editCommentary(StateInfo info) {
+        Scanner scanner = new Scanner(System.in);
+        Long stepId;
+        try {
+            stepId = Long.parseLong(info.getStringParams().get("Choice").strip().split("c")[0]);
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            info.setNewState(null);
+            return;
+        }
+
+        Integer comId;
+        try {
+            comId = Integer.parseInt(info.getStringParams().get("Choice").strip().split("c")[1].split("r")[0]);
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            System.out.print("Введите комментарий: ");
+            String comment = new Scanner(System.in).nextLine();
+            commentaryService.addCommentary(new Commentary(stateInfo.getUser().getId(), stepId, 0, comment));
+            return;
+        }
+
+        List<Commentary> commentaries = commentaryService.findUserStepCommentaries(stateInfo.getUser().getId(), stepId);
+        Commentary commentary = commentaries
+                .stream()
+                .filter(c -> c.getOrderNum().equals(comId))
+                .findFirst()
+                .orElse(null);
+
+        if (commentary != null) {
+            System.out.println("Комментарий :" + commentary.getText());
+            String del = "";
+            while (!del.equals("y") && !del.equals("n")) {
+                System.out.print("Удалить комментарий [Y/N]: ");
+                del = scanner.nextLine().toLowerCase();
+            }
+            if (del.equals("y")) {
+                commentaryService.deleteCommentary(stepId, stateInfo.getUser().getId(), comId);
+                return;
+            }
+
+            System.out.print("Введите комментарий: ");
+            String text = scanner.nextLine();
+
+            System.out.println(
+                    commentaryService.updateCommentary(
+                            new Commentary(stateInfo.getUser().getId(), stepId, comId, text)));
+        } else {
+            System.out.print("Введите комментарий: ");
+            String text = scanner.nextLine();
+            commentaryService.addCommentary(new Commentary(stateInfo.getUser().getId(), stepId, comId, text));
+        }
+    }
+
+    private void editRecipe(StateInfo info) {
+        if (!recipe.getId().equals(stateInfo.getUser().getId())) return;
+        if (info.getStringParams().get("Choice").equals("e")) {
+            info.setNewState(StateName.ADD_RECIPE);
+            Map<String, String> params = new HashMap<>();
+            params.put("Type", "EDIT");
+            params.put("RecipeId", recipe.getId().toString());
+            info.setStringParams(params);
+        }
+    }
 }

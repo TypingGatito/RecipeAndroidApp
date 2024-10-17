@@ -26,4 +26,6 @@ public interface IRecipeRepository {
 
     void removeFromFavourite(Long recipeId, Long userId);
 
+    void removeRecipe(Long recipeId);
+
 }

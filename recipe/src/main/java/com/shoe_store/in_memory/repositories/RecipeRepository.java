@@ -5,6 +5,7 @@ import com.shoe_store.models.Recipe;
 import com.shoe_store.repositories.IRecipeRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -40,6 +41,14 @@ public final class RecipeRepository implements IRecipeRepository {
 
     @Override
     public Boolean addRecipe(Recipe recipe) {
+        Long m = inMemoryInfo
+                .getRecipes()
+                .stream()
+                .mapToLong(Recipe::getId)
+                .max()
+                .orElse(0) + 1;
+        recipe.setId(m);
+        recipe.setCreatedAt(LocalDateTime.now());
         return inMemoryInfo.getRecipes().add(recipe);
     }
 
@@ -87,6 +96,11 @@ public final class RecipeRepository implements IRecipeRepository {
     @Override
     public void removeFromFavourite(Long recipeId, Long userId) {
         inMemoryInfo.getUserFavouriteRecipe().removeUserRecipe(userId, recipeId);
+    }
+
+    @Override
+    public void removeRecipe(Long recipeId) {
+        inMemoryInfo.getRecipes().removeIf(r -> r.getId().equals(recipeId));
     }
 
 }

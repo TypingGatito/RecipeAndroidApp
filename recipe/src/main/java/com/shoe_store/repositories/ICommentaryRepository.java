@@ -15,6 +15,6 @@ public interface ICommentaryRepository {
 
     Boolean updateCommentary(Commentary commentary);
 
-    Boolean deleteCommentary(Long stepId, Long userId);
+    Boolean deleteCommentary(Long stepId, Long userId, Integer order_num);
 
 }

@@ -54,7 +54,7 @@ public class InMemoryInfo {
 
     private void initUsers() {
         users = new ArrayList<>();
-        users.add(new User(1L, "user1", "password1", "user1@example.com", true));
+        users.add(new User(1L, "user1", "p1", "p", true));
         users.add(new User(2L, "user2", "password2", "user2@example.com", true));
         users.add(new User(3L, "admin", "a", "a", true));
         users.add(new User(4L, "Solaire", "s", "s.com", true));

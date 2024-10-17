@@ -18,9 +18,18 @@ public class StateFactory {
             case RECIPE_PAGE -> createRecipePage(info);
             case REGISTRATION_PAGE -> createRegistrationState();
             case ADMIN -> createAdminState(info);
+            case ADD_RECIPE -> createRecipeEdiPage(info);
         };
 
         return page;
+    }
+
+    private Page createRecipeEdiPage(StateInfo info) {
+        return new RecipeEditPage(menuHead(info), servicesConfig.getRecipeService(),
+                servicesConfig.getSectionService(),
+                servicesConfig.getIngredientService(),
+                servicesConfig.getStepService(),
+                info);
     }
 
     private Page createAdminState(StateInfo info) {

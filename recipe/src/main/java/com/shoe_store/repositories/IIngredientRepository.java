@@ -14,4 +14,6 @@ public interface IIngredientRepository {
 
     Boolean deleteById(Long id);
 
+    void addIngredient(Ingredient ingredient);
+
 }

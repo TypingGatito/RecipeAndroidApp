@@ -1,6 +1,7 @@
 package com.shoe_store.in_memory.repositories;
 
 import com.shoe_store.in_memory.db.InMemoryInfo;
+import com.shoe_store.models.Ingredient;
 import com.shoe_store.models.Step;
 import com.shoe_store.repositories.IStepRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +34,13 @@ public final class StepRepository implements IStepRepository {
 
     @Override
     public Boolean addStep(Step step) {
-        if (inMemoryInfo.getSteps().contains(step)) return false;
+        step.setId(inMemoryInfo.getSteps()
+                .stream()
+                .mapToLong(Step::getId)
+                .max()
+                .orElse(0) + 1);
 
+        inMemoryInfo.getSteps().add(step);
         return true;
     }
 

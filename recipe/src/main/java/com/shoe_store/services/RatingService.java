@@ -24,4 +24,5 @@ public class RatingService {
     public void deleteRating(Long userId, Long recipeId) {
         ratingRepository.deleteRating(userId, recipeId);
     }
+
 }

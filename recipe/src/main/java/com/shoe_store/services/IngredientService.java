@@ -15,4 +15,7 @@ public class IngredientService {
         return ingredientRepository.findByRecipeId(recipeId);
     }
 
+    public void add(Ingredient ingredient) {
+        ingredientRepository.addIngredient(ingredient);
+    }
 }

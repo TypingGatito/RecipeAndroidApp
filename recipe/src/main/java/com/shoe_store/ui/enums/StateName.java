@@ -12,6 +12,8 @@ public enum StateName {
 
     REGISTRATION_PAGE,
 
-    ADMIN
+    ADMIN,
+
+    ADD_RECIPE
 
 }
