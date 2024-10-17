@@ -1,11 +1,22 @@
 package com.shoe_store.services;
 
-import com.shoe_store.repositories.commentary.ICommentaryRepository;
+import com.shoe_store.models.Commentary;
+import com.shoe_store.repositories.ICommentaryRepository;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 public class CommentaryService {
 
     private final ICommentaryRepository commentaryRepository;
+
+    public Boolean deleteCommentary(Long stepId, Long userId) {
+        return commentaryRepository.deleteCommentary(stepId, userId);
+    }
+
+    public List<Commentary> findUserStepCommentaries(Long userId, Long stepId) {
+        return commentaryRepository.findUserStepCommentaries(userId, stepId);
+    }
 
 }

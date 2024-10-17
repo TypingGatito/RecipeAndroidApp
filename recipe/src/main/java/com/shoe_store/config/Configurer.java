@@ -1,22 +1,22 @@
 package com.shoe_store.config;
 
-import com.shoe_store.in_memory_info.InMemoryInfo;
-import com.shoe_store.repositories.admin.AdminRepository;
-import com.shoe_store.repositories.admin.IAdminRepository;
-import com.shoe_store.repositories.commentary.CommentaryRepository;
-import com.shoe_store.repositories.commentary.ICommentaryRepository;
-import com.shoe_store.repositories.ingredient.IIngredientRepository;
-import com.shoe_store.repositories.ingredient.IngredientRepository;
-import com.shoe_store.repositories.rating.IRatingRepository;
-import com.shoe_store.repositories.rating.RatingRepository;
-import com.shoe_store.repositories.recipe.IRecipeRepository;
-import com.shoe_store.repositories.recipe.RecipeRepository;
-import com.shoe_store.repositories.section.ISectionRepository;
-import com.shoe_store.repositories.section.SectionRepository;
-import com.shoe_store.repositories.step.IStepRepository;
-import com.shoe_store.repositories.step.StepRepository;
-import com.shoe_store.repositories.user.IUserRepository;
-import com.shoe_store.repositories.user.UserRepository;
+import com.shoe_store.in_memory.db.InMemoryInfo;
+import com.shoe_store.in_memory.repositories.AdminRepository;
+import com.shoe_store.repositories.IAdminRepository;
+import com.shoe_store.in_memory.repositories.CommentaryRepository;
+import com.shoe_store.repositories.ICommentaryRepository;
+import com.shoe_store.repositories.IIngredientRepository;
+import com.shoe_store.in_memory.repositories.IngredientRepository;
+import com.shoe_store.repositories.IRatingRepository;
+import com.shoe_store.in_memory.repositories.RatingRepository;
+import com.shoe_store.repositories.IRecipeRepository;
+import com.shoe_store.in_memory.repositories.RecipeRepository;
+import com.shoe_store.repositories.ISectionRepository;
+import com.shoe_store.in_memory.repositories.SectionRepository;
+import com.shoe_store.repositories.IStepRepository;
+import com.shoe_store.in_memory.repositories.StepRepository;
+import com.shoe_store.repositories.IUserRepository;
+import com.shoe_store.in_memory.repositories.UserRepository;
 import com.shoe_store.services.*;
 import lombok.NoArgsConstructor;
 
@@ -42,7 +42,7 @@ public class Configurer {
     public ServicesConfig config() {
         configRepositories();
 
-        ServicesConfig config = ServicesConfig.builder()
+        return ServicesConfig.builder()
                 .adminService(adminService())
                 .commentaryService(commentaryService())
                 .ingredientService(ingredientService())
@@ -52,8 +52,6 @@ public class Configurer {
                 .stepService(stepService())
                 .userService(userService())
                 .build();
-
-        return config;
     }
 
     private AdminService adminService() {
