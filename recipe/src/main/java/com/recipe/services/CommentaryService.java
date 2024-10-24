@@ -1,11 +1,13 @@
 package com.recipe.services;
 
+import com.recipe.annotations.Element;
 import com.recipe.models.Commentary;
 import com.recipe.repositories.ICommentaryRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+@Element
 @RequiredArgsConstructor
 public class CommentaryService {
 

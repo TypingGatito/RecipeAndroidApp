@@ -16,7 +16,13 @@ public class ElementConfigurer {
     private final Map<String, Object> config = new HashMap<String, Object>();
 
     {
-        interfaceToClass.put("", "");
+        interfaceToClass.put("com.recipe.repositories.IAdminRepository", "com.recipe.in_memory.repositories.AdminRepository");
+        interfaceToClass.put("com.recipe.repositories.IIngredientRepository", "com.recipe.in_memory.repositories.IngredientRepository");
+        interfaceToClass.put("com.recipe.repositories.IRatingRepository", "com.recipe.in_memory.repositories.RatingRepository");
+        interfaceToClass.put("com.recipe.repositories.IRecipeRepository", "com.recipe.in_memory.repositories.RecipeRepository");
+        interfaceToClass.put("com.recipe.repositories.ISectionRepository", "com.recipe.in_memory.repositories.SectionRepository");
+        interfaceToClass.put("com.recipe.repositories.IUserRepository", "com.recipe.in_memory.repositories.UserRepository");
+        interfaceToClass.put("com.recipe.repositories.IStepRepository", "com.recipe.in_memory.repositories.StepRepository");
     }
 
     public void configureObject(Object obj) throws Exception {
@@ -39,6 +45,8 @@ public class ElementConfigurer {
                 }
 
                 Object newInstance = initializeObject(fieldClazz);
+
+                fieldClazz = newInstance.getClass();
 
                 config.put(fieldClazz.getName(), newInstance);
 

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Rename main package">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/StepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/StepService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="AnnotationType" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TypingGatito&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TypingGatito/RecipeAndroidApp&quot;,
+    &quot;accountId&quot;: &quot;2a82e822-d650-4174-8ecc-ed9f4f2e0926&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2mv3gcWIP9ntLOI0t1pXyJaZmmH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "JUnit.ElementConfigurerTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/University/3year_part1/БД/shoe_store",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\AndroidProjects\RecipesApp\recipe" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.recipe.config" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.recipe.Application" />
+      <module name="recipe" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="" />
+      <created>1727943336925</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727943336925</updated>
+      <workItem from="1727943338062" duration="325000" />
+      <workItem from="1727965037508" duration="30000" />
+      <workItem from="1728379527868" duration="1707000" />
+      <workItem from="1728382179205" duration="3814000" />
+      <workItem from="1728393403481" duration="10133000" />
+      <workItem from="1728406835145" duration="2487000" />
+      <workItem from="1728499591904" duration="6328000" />
+      <workItem from="1728636442350" duration="4786000" />
+      <workItem from="1728667912279" duration="19000" />
+      <workItem from="1728830970718" duration="4668000" />
+      <workItem from="1728837654037" duration="12733000" />
+      <workItem from="1728886404985" duration="8114000" />
+      <workItem from="1728910184642" duration="26102000" />
+      <workItem from="1728997569920" duration="61000" />
+      <workItem from="1728997637591" duration="5000" />
+      <workItem from="1729156014905" duration="5658000" />
+      <workItem from="1729163899386" duration="14968000" />
+      <workItem from="1729190365469" duration="12000" />
+      <workItem from="1729282849254" duration="5657000" />
+      <workItem from="1729323189528" duration="1650000" />
+      <workItem from="1729326811278" duration="73000" />
+    </task>
+    <task id="LOCAL-00001" summary="Implement repositories">
+      <option name="closed" value="true" />
+      <created>1728395612340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728395612340</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add services configurer">
+      <option name="closed" value="true" />
+      <created>1728398632969</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728398632969</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add UI">
+      <option name="closed" value="true" />
+      <created>1729163929095</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729163929095</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add UI for adding a recipe">
+      <option name="closed" value="true" />
+      <created>1729179338234</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729179338234</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Annotations for config&#10;&#10;&#10;Add Configurer to use annotations&#10;Slightly update UI">
+      <option name="closed" value="true" />
+      <created>1729747509370</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729747509370</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Annotations for config&#10;&#10;&#10;Add Configurer to use annotations&#10;Slightly update UI">
+      <option name="closed" value="true" />
+      <created>1729747545548</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729747545548</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rename main package">
+      <option name="closed" value="true" />
+      <created>1729748727773</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729748727773</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement repositories" />
+    <MESSAGE value="Add services configurer" />
+    <MESSAGE value="Add UI" />
+    <MESSAGE value="Add UI for adding a recipe" />
+    <MESSAGE value="Add Annotations for config&#10;&#10;&#10;Add Configurer to use annotations&#10;Slightly update UI" />
+    <MESSAGE value="Rename main package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename main package" />
+  </component>
+</project>

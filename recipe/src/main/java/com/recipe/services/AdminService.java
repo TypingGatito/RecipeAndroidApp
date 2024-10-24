@@ -1,10 +1,12 @@
 package com.recipe.services;
 
+import com.recipe.annotations.Element;
 import com.recipe.models.User;
 import com.recipe.repositories.IAdminRepository;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
 
+@Element
 @RequiredArgsConstructor
 public class AdminService {
 

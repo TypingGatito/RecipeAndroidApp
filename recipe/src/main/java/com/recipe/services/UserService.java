@@ -1,5 +1,6 @@
 package com.recipe.services;
 
+import com.recipe.annotations.Element;
 import com.recipe.models.Recipe;
 import com.recipe.models.User;
 import com.recipe.models.enums.UserRole;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Set;
 
+@Element
 @RequiredArgsConstructor
 public class UserService {
 

@@ -1,9 +1,11 @@
 package com.recipe.services;
 
+import com.recipe.annotations.Element;
 import com.recipe.models.Rating;
 import com.recipe.repositories.IRatingRepository;
 import lombok.RequiredArgsConstructor;
 
+@Element
 @RequiredArgsConstructor
 public class RatingService {
 
