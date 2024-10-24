@@ -17,6 +17,7 @@ public class ElementConfigurer {
 
     {
         interfaceToClass.put("com.recipe.repositories.IAdminRepository", "com.recipe.in_memory.repositories.AdminRepository");
+        interfaceToClass.put("com.recipe.repositories.ICommentaryRepository", "com.recipe.in_memory.repositories.CommentaryRepository");
         interfaceToClass.put("com.recipe.repositories.IIngredientRepository", "com.recipe.in_memory.repositories.IngredientRepository");
         interfaceToClass.put("com.recipe.repositories.IRatingRepository", "com.recipe.in_memory.repositories.RatingRepository");
         interfaceToClass.put("com.recipe.repositories.IRecipeRepository", "com.recipe.in_memory.repositories.RecipeRepository");

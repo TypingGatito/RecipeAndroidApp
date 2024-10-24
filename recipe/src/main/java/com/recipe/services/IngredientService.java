@@ -1,17 +1,23 @@
 package com.recipe.services;
 
 import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.models.Ingredient;
 import com.recipe.repositories.IIngredientRepository;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Element
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class IngredientService {
 
-    private final IIngredientRepository ingredientRepository;
+    @Injected
+    @NonNull
+    private IIngredientRepository ingredientRepository;
 
     public List<Ingredient> findByRecipeId(Long recipeId) {
         return ingredientRepository.findByRecipeId(recipeId);

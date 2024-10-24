@@ -1,15 +1,21 @@
 package com.recipe.services;
 
 import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.models.Rating;
 import com.recipe.repositories.IRatingRepository;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Element
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class RatingService {
 
-    private final IRatingRepository ratingRepository;
+    @Injected
+    @NonNull
+    private IRatingRepository ratingRepository;
 
     public Double findRatingByRecipeId(Long recipeId) {
         return ratingRepository.findRatingByRecipeId(recipeId);

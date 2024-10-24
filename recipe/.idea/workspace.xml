@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Rename main package">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/StepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/StepService.java" afterDir="false" />
+    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/IngredientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/IngredientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/RatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/RecipeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729748727773</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization">
+      <option name="closed" value="true" />
+      <created>1729750242396</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729750242396</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +215,7 @@
     <MESSAGE value="Add UI for adding a recipe" />
     <MESSAGE value="Add Annotations for config&#10;&#10;&#10;Add Configurer to use annotations&#10;Slightly update UI" />
     <MESSAGE value="Rename main package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename main package" />
+    <MESSAGE value="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization" />
   </component>
 </project>

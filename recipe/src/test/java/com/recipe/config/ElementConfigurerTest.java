@@ -14,7 +14,7 @@ class ElementConfigurerTest {
         try {
             configurer.configureObject(stepService);
         } catch (Exception e) {
-            System.out.println("Step service was not initialized");
+            System.out.println("Step service was not initialized" + e.getMessage());
         }
 
     }

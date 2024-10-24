@@ -1,29 +1,41 @@
 package com.recipe.config;
 
+import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.services.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Element
 public class ServicesConfig {
 
+    @Injected
     private AdminService adminService;
 
+    @Injected
     private CommentaryService commentaryService;
 
+    @Injected
     private IngredientService ingredientService;
 
+    @Injected
     private RecipeService recipeService;
 
+    @Injected
     private RatingService ratingService;
 
+    @Injected
     private SectionService sectionService;
 
+    @Injected
     private StepService stepService;
 
+    @Injected
     private UserService userService;
 
     public static ServicesConfigBuilder builder() {

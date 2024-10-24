@@ -1,17 +1,23 @@
 package com.recipe.services;
 
 import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.models.Commentary;
 import com.recipe.repositories.ICommentaryRepository;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Element
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class CommentaryService {
 
-    private final ICommentaryRepository commentaryRepository;
+    @Injected
+    @NonNull
+    private ICommentaryRepository commentaryRepository;
 
     public Boolean deleteCommentary(Long stepId, Long userId, Integer order_num) {
         return commentaryRepository.deleteCommentary(stepId, userId, order_num);

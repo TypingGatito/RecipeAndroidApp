@@ -1,23 +1,31 @@
 package com.recipe.services;
 
 import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.models.Recipe;
 import com.recipe.models.User;
 import com.recipe.models.enums.UserRole;
 import com.recipe.repositories.IRecipeRepository;
 import com.recipe.repositories.IUserRepository;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Set;
 
 @Element
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class UserService {
 
-    private final IUserRepository userRepository;
+    @Injected
+    @NonNull
+    private IUserRepository userRepository;
 
-    private final IRecipeRepository recipeRepository;
+    @Injected
+    @NonNull
+    private IRecipeRepository recipeRepository;
 
     public Set<UserRole> getUserRoles(Long userId) {
         return userRepository.getUserRoles(userId);
