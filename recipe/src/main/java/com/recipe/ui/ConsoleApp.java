@@ -14,6 +14,7 @@ public class ConsoleApp {
     public void run() {
 
         ServicesConfig servicesConfig = new ServicesConfig();
+
         Context context;
         try {
             elementConfigurer.configureObject(servicesConfig);
@@ -24,7 +25,7 @@ public class ConsoleApp {
         context = new Context(StateName.REGISTRATION_PAGE,
                 new StateFactory(servicesConfig));
 
-        while (true) {
+        while (context.hasContent()) {
             context.display();
             context.handleInput();
         }

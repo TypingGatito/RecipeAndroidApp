@@ -23,7 +23,7 @@ public class AuthorizationPage implements Page {
         StateInfo info = new StateInfo();
 
         Scanner scanner = new Scanner(System.in);
-        handleExit(scanner);
+        if (handleExit(scanner)) return null;
 
         boolean reg = handleRegistration(scanner);
 
@@ -36,7 +36,7 @@ public class AuthorizationPage implements Page {
         return info;
     }
 
-    private void handleExit(Scanner scanner) {
+    private boolean handleExit(Scanner scanner) {
         String input = scanner.nextLine().toLowerCase();
 
         while (!input.equals("y") && !input.equals("n")) {
@@ -44,9 +44,7 @@ public class AuthorizationPage implements Page {
             input = scanner.nextLine().toLowerCase();
         }
 
-        if (input.equals("y")) {
-            System.exit(0);
-        }
+        return input.equals("y");
     }
 
     private boolean handleRegistration(Scanner scanner) {

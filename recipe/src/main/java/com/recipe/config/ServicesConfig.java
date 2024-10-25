@@ -8,10 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+@Element
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Element
 public class ServicesConfig {
 
     @Injected

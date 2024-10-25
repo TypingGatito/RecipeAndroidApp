@@ -1,16 +1,23 @@
 package com.recipe.ui;
 
+import com.recipe.annotations.Element;
+import com.recipe.annotations.Injected;
 import com.recipe.config.ServicesConfig;
 import com.recipe.ui.info.StateInfo;
 import com.recipe.ui.states.*;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
+@Element
 @AllArgsConstructor
 public class StateFactory {
 
-    private final ServicesConfig servicesConfig;
+    @Injected
+    private ServicesConfig servicesConfig;
 
     public Page getState(StateInfo info) {
+        if (info == null || info.getNewState() == null) return null;
         Page page = switch (info.getNewState()) {
             case MAIN -> createMainState(info);
             case RECIPE_LIST -> createDishListState(info);

@@ -27,4 +27,8 @@ public class Context {
         page = stateFactory.getState(info);
     }
 
+    public boolean hasContent() {
+        return this.page != null;
+    }
+
 }

@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization">
+    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add services config through annotations">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/IngredientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/IngredientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/RatingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/RecipeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/StateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/StateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/states/AuthorizationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/states/AuthorizationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,29 +51,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Application.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "JUnit.ElementConfigurerTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/University/3year_part1/БД/shoe_store",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ElementConfigurerTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/University/3year_part1/БД/shoe_store&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\AndroidProjects\RecipesApp\recipe" />
@@ -191,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729750242396</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add services config through annotations">
+      <option name="closed" value="true" />
+      <created>1729751264710</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729751264710</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +221,7 @@
     <MESSAGE value="Add Annotations for config&#10;&#10;&#10;Add Configurer to use annotations&#10;Slightly update UI" />
     <MESSAGE value="Rename main package" />
     <MESSAGE value="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization" />
+    <MESSAGE value="Add services config through annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add services config through annotations" />
   </component>
 </project>
