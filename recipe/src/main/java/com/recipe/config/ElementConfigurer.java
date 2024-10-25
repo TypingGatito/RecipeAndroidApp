@@ -26,7 +26,7 @@ public class ElementConfigurer {
         interfaceToClass.put("com.recipe.repositories.IStepRepository", "com.recipe.in_memory.repositories.StepRepository");
     }
 
-    public void configureObject(Object obj) throws Exception {
+    public void configureObject(Object obj) {
         Class<?> clazz = obj.getClass();
 
         if (clazz.isAnnotationPresent(Element.class)) {
@@ -40,20 +40,26 @@ public class ElementConfigurer {
 
                 Class<?> fieldClazz = field.getType();
 
-                if (config.containsKey(fieldClazz.getSimpleName())) {
-                    field.set(obj, config.get(fieldClazz.getName()));
-                    continue;
+                try {
+
+                    if (config.containsKey(fieldClazz.getSimpleName())) {
+                        field.set(obj, config.get(fieldClazz.getName()));
+                    } else {
+
+                        Object newInstance = initializeObject(fieldClazz);
+
+                        fieldClazz = newInstance.getClass();
+
+                        config.put(fieldClazz.getName(), newInstance);
+
+                        if (fieldClazz.isAnnotationPresent(Element.class)) configureObject(newInstance);
+
+                        field.set(obj, newInstance);
+                    }
+                } catch (IllegalAccessException | InvocationTargetException |
+                NoSuchMethodException | InstantiationException e) {
+                    throw new RuntimeException("Class Injection error" + e.getMessage());
                 }
-
-                Object newInstance = initializeObject(fieldClazz);
-
-                fieldClazz = newInstance.getClass();
-
-                config.put(fieldClazz.getName(), newInstance);
-
-                if (fieldClazz.isAnnotationPresent(Element.class)) configureObject(newInstance);
-
-                field.set(obj, newInstance);
             }
         }
     }

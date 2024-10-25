@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Element
-@AllArgsConstructor
+@NoArgsConstructor
 public class StateFactory {
 
     @Injected

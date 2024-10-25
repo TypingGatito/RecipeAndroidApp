@@ -1,29 +1,21 @@
 package com.recipe.ui;
 
 import com.recipe.config.ElementConfigurer;
-import com.recipe.config.ServicesConfig;
 import com.recipe.ui.enums.StateName;
 
 public class ConsoleApp {
 
-    private ElementConfigurer elementConfigurer = new ElementConfigurer();
+    private final ElementConfigurer elementConfigurer = new ElementConfigurer();
 
     public ConsoleApp() {
     }
 
     public void run() {
+        Context context = new Context();
 
-        ServicesConfig servicesConfig = new ServicesConfig();
+        elementConfigurer.configureObject(context);
 
-        Context context;
-        try {
-            elementConfigurer.configureObject(servicesConfig);
-        } catch (Exception e) {
-            throw new RuntimeException("Sevices config error" + e.getMessage());
-        }
-
-        context = new Context(StateName.REGISTRATION_PAGE,
-                new StateFactory(servicesConfig));
+        context.setStateName(StateName.REGISTRATION_PAGE);
 
         while (context.hasContent()) {
             context.display();

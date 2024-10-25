@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add services config through annotations">
+    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Change ConsoleApp loop to content check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ServicesConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/config/ElementConfigurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/ConsoleApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/Context.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/StateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/StateFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/ui/states/AuthorizationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/ui/states/AuthorizationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729751264710</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Change ConsoleApp loop to content check">
+      <option name="closed" value="true" />
+      <created>1729876792090</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729876792090</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +228,7 @@
     <MESSAGE value="Rename main package" />
     <MESSAGE value="Add interface initialization for annotations&#10;&#10;Add test for stepService initialization" />
     <MESSAGE value="Add services config through annotations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add services config through annotations" />
+    <MESSAGE value="Change ConsoleApp loop to content check" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change ConsoleApp loop to content check" />
   </component>
 </project>
