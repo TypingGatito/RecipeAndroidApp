@@ -2,10 +2,14 @@ package com.recipe.models.enums;
 
 public enum Unit {
 
-    GRAMS,
+    GRAM,
 
-    KILOGRAMS,
+    KILOGRAM,
 
-    TEA_SPOON
+    TEA_SPOON,
+
+    PIECE,
+
+    LITER
 
 }

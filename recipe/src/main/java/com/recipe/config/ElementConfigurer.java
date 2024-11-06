@@ -16,10 +16,10 @@ public class ElementConfigurer {
     private final Map<String, Object> config = new HashMap<String, Object>();
 
     {
-        inMemory();
+        sqlRepos();
     }
 
-    private void inMemory() {
+    private void inMemoryRepos() {
         interfaceToClass.put("com.recipe.repositories.IAdminRepository", "com.recipe.in_memory.repositories.AdminRepository");
         interfaceToClass.put("com.recipe.repositories.ICommentaryRepository", "com.recipe.in_memory.repositories.CommentaryRepository");
         interfaceToClass.put("com.recipe.repositories.IIngredientRepository", "com.recipe.in_memory.repositories.IngredientRepository");
@@ -30,15 +30,15 @@ public class ElementConfigurer {
         interfaceToClass.put("com.recipe.repositories.IStepRepository", "com.recipe.in_memory.repositories.StepRepository");
     }
 
-    private void sqlMemory() {
-        interfaceToClass.put("com.recipe.repositories.IAdminRepository", "com.recipe.sql_repositories.AdminRepository");
-        interfaceToClass.put("com.recipe.repositories.ICommentaryRepository", "com.recipe.sql_repositories.CommentaryRepository");
-        interfaceToClass.put("com.recipe.repositories.IIngredientRepository", "com.recipe.sql_repositories.IngredientRepository");
-        interfaceToClass.put("com.recipe.repositories.IRatingRepository", "com.recipe.sql_repositories.RatingRepository");
-        interfaceToClass.put("com.recipe.repositories.IRecipeRepository", "com.recipe.sql_repositories.RecipeRepository");
-        interfaceToClass.put("com.recipe.repositories.ISectionRepository", "com.recipe.sql_repositories.SectionRepository");
-        interfaceToClass.put("com.recipe.repositories.IUserRepository", "com.recipe.sql_repositories.UserRepository");
-        interfaceToClass.put("com.recipe.repositories.IStepRepository", "com.recipe.sql_repositories.StepRepository");
+    private void sqlRepos() {
+        interfaceToClass.put("com.recipe.repositories.IAdminRepository", "com.recipe.sql.repositories.AdminRepository");
+        interfaceToClass.put("com.recipe.repositories.ICommentaryRepository", "com.recipe.sql.repositories.CommentaryRepository");
+        interfaceToClass.put("com.recipe.repositories.IIngredientRepository", "com.recipe.sql.repositories.IngredientRepository");
+        interfaceToClass.put("com.recipe.repositories.IRatingRepository", "com.recipe.sql.repositories.RatingRepository");
+        interfaceToClass.put("com.recipe.repositories.IRecipeRepository", "com.recipe.sql.repositories.RecipeRepository");
+        interfaceToClass.put("com.recipe.repositories.ISectionRepository", "com.recipe.sql.repositories.SectionRepository");
+        interfaceToClass.put("com.recipe.repositories.IUserRepository", "com.recipe.sql.repositories.UserRepository");
+        interfaceToClass.put("com.recipe.repositories.IStepRepository", "com.recipe.sql.repositories.StepRepository");
     }
 
     public void configureObject(Object obj) {

@@ -81,11 +81,4 @@ public final class UserRepository implements IUserRepository {
         return inMemoryInfo.getUsers().removeIf((user) -> user.getId().equals(id));
     }
 
-    @Override
-    public Set<UserRole> findUserRoleById(Long id) {
-        return inMemoryInfo
-                .getUserRoles()
-                .get(id);
-    }
-
 }

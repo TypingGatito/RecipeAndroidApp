@@ -17,8 +17,6 @@ public interface IUserRepository {
 
     Boolean deleteUser(Long id);
 
-    Set<UserRole> findUserRoleById(Long id);
-
     Set<UserRole> getUserRoles(Long userId);
 
 }

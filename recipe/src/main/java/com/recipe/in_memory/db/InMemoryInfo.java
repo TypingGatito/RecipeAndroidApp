@@ -71,9 +71,9 @@ public class InMemoryInfo {
 
     private void initIngredients() {
         ingredients = new ArrayList<>();
-        ingredients.add(new Ingredient(1L, 1L, "Flour", 500, Unit.GRAMS));
-        ingredients.add(new Ingredient(2L, 1L, "Sugar", 200, Unit.GRAMS));
-        ingredients.add(new Ingredient(3L, 1L, "Butter", 100, Unit.GRAMS));
+        ingredients.add(new Ingredient(1L, 1L, "Flour", 500, Unit.GRAM));
+        ingredients.add(new Ingredient(2L, 1L, "Sugar", 200, Unit.GRAM));
+        ingredients.add(new Ingredient(3L, 1L, "Butter", 100, Unit.GRAM));
     }
 
     private void initRatings() {
