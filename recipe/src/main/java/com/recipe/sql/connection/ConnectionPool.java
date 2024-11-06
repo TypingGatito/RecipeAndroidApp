@@ -28,7 +28,6 @@ public class ConnectionPool {
     }
 
     public synchronized Connection getConnection() {
-
         while (availableConnections.isEmpty()) {
             try {
                 wait();
