@@ -49,8 +49,11 @@ public final class UserRepository implements IUserRepository {
     public Boolean addUser(User user) {
         if (user == null) return false;
 
-        String insertUserQuery = "INSERT INTO users (id, email, password, login, is_active) VALUES (?, ?, ?, ?, ?)";
-        String insertRoleQuery = "INSERT INTO user_roles (user_id, role) VALUES (?, ?)";
+        user.setIsActive(true);
+
+        String insertUserQuery = "INSERT INTO users (email, password, login, is_active) VALUES (?, ?, ?, ?)";
+        String insertRoleQuery = "INSERT INTO user_role (user_id, role) VALUES (?, ?)";
+        String getUserID = "SELECT id FROM users WHERE email = ?";
         Connection connection = connectionPool.getConnection();
         try {
             if (findUserByEmail(user.getEmail()) != null) {
@@ -58,16 +61,23 @@ public final class UserRepository implements IUserRepository {
             }
 
             try (PreparedStatement userStatement = connection.prepareStatement(insertUserQuery)) {
-                userStatement.setLong(1, user.getId());
-                userStatement.setString(2, user.getEmail());
-                userStatement.setString(3, user.getPassword());
-                userStatement.setString(4, user.getLogin());
-                userStatement.setBoolean(5, user.getIsActive());
+                //userStatement.setLong(1, user.getId());
+                userStatement.setString(1, user.getEmail());
+                userStatement.setString(2, user.getPassword());
+                userStatement.setString(3, user.getLogin());
+                userStatement.setBoolean(4, user.getIsActive());
                 userStatement.executeUpdate();
             }
 
+            Long userId = 0L;
+            try (PreparedStatement userStatement = connection.prepareStatement(getUserID)) {
+                userStatement.setString(1, user.getEmail());
+                ResultSet resultSet = userStatement.executeQuery();
+                if (resultSet.next()) userId = resultSet.getLong("id");
+            }
+
             try (PreparedStatement roleStatement = connection.prepareStatement(insertRoleQuery)) {
-                roleStatement.setLong(1, user.getId());
+                roleStatement.setLong(1, userId);
                 roleStatement.setString(2, UserRole.USER.name());
                 roleStatement.executeUpdate();
             }

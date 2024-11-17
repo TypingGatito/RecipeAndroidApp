@@ -78,7 +78,7 @@ public class AuthorizationPage implements Page {
         System.out.print("Введите пароль: ");
         String password = scanner.nextLine();
 
-        if (!password.equals(user.getPassword())) {
+        if (!userService.login(email, password)) {
             System.out.println("Неверный пароль");
             info.setNewState(StateName.REGISTRATION_PAGE);
             return;
@@ -98,7 +98,7 @@ public class AuthorizationPage implements Page {
 
         System.out.print("Введите логин: ");
         String login = scanner.nextLine();
-        newUser.setEmail(login);
+        newUser.setLogin(login);
 
         System.out.print("Введите пароль: ");
         String password = scanner.nextLine();
@@ -108,6 +108,9 @@ public class AuthorizationPage implements Page {
 
         info.setNewState(StateName.MAIN);
         info.setUser(newUser);
+
+        newUser = userService.findUserByEmail(email);
+        info.setRolesSet(userService.getUserRoles(newUser.getId()));
     }
 
 }

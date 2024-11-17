@@ -1,9 +1,5 @@
 CREATE DATABASE IF NOT EXIST recipes;
 
-CREATE TYPE UNIT AS ENUM ('GRAM', 'LITER', 'PIECE');
-
-CREATE TYPE ROLE AS ENUM ('USER', 'ADMIN');
-
 CREATE TABLE IF NOT EXISTS users (
 id SERIAL PRIMARY KEY,
 login VARCHAR(255),
@@ -14,7 +10,7 @@ is_active BOOLEAN
 
 CREATE TABLE IF NOT EXISTS user_role (
 user_id INT,
-role ROLE,
+role VARCHAR(255),
 
 FOREIGN KEY (user_id) REFERENCES users(id),
 PRIMARY KEY (user_id, role)
@@ -32,7 +28,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     user_id BIGINT NOT NULL,
     name VARCHAR(255) NOT NULL,
     calories_on_hund_g INT,
-    time_to_cook INTERVAL,
+    time_to_cook VARCHAR(255),
     dose_num INT,
     short_description TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -40,7 +36,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE IF NOT EXISTS step (
+CREATE TABLE IF NOT EXISTS steps (
     id SERIAL PRIMARY KEY,
     recipe_id BIGINT NOT NULL,
     num INT NOT NULL,
@@ -72,7 +68,7 @@ CREATE TABLE IF NOT EXISTS ingredients (
     recipe_id BIGINT,
     name VARCHAR(255),
     amount INT,
-    unit UNIT,
+    unit VARCHAR(255),
     FOREIGN KEY (recipe_id) REFERENCES recipes(id)
 );
 

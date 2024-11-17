@@ -19,7 +19,7 @@ public class MenuHead implements Page {
         System.out.print(" Выход(0)");
         System.out.print(" | ");
         System.out.print("Очистить(c)");
-        if (stateInfo.getRolesSet().contains(UserRole.ADMIN)) {
+        if (stateInfo.getRolesSet() != null && stateInfo.getRolesSet().contains(UserRole.ADMIN)) {
             System.out.print(" | ");
             System.out.print(" Админ(adm)");
         }

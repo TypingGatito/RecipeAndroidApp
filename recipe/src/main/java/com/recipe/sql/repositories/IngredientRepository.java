@@ -26,8 +26,9 @@ public final class IngredientRepository implements IIngredientRepository {
     public Ingredient findById(Long id) {
         String query = "SELECT * FROM ingredients WHERE id = ?";
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = connectionPool.getConnection();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -36,6 +37,8 @@ public final class IngredientRepository implements IIngredientRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
         }
         return null;
     }
@@ -44,9 +47,9 @@ public final class IngredientRepository implements IIngredientRepository {
     public List<Ingredient> findByRecipeId(Long recipeId) {
         List<Ingredient> ingredients = new ArrayList<>();
         String query = "SELECT * FROM ingredients WHERE recipe_id = ?";
+        Connection connection = connectionPool.getConnection();
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, recipeId);
             ResultSet resultSet = statement.executeQuery();
@@ -56,6 +59,8 @@ public final class IngredientRepository implements IIngredientRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
         }
         return ingredients;
     }

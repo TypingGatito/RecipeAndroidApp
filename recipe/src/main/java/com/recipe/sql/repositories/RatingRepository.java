@@ -79,21 +79,45 @@ public final class RatingRepository implements IRatingRepository {
 
     @Override
     public void setRating(Long userId, Long recipeId, Double ratingV) {
-        String updateQuery = "UPDATE recipes SET rating = ? WHERE recipe_id = ? AND user_id = ?";
+        String checkQuery = "SELECT COUNT(*) FROM rating WHERE recipe_id = ? AND user_id = ?";
+        String updateQuery = "UPDATE rating SET rating = ? WHERE recipe_id = ? AND user_id = ?";
+        String insertQuery = "INSERT INTO rating (recipe_id, user_id, rating) VALUES (?, ?, ?)";
 
         Connection connection = connectionPool.getConnection();
-        try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+        try (PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
+            // Проверяем, существует ли запись
+            checkStatement.setLong(1, recipeId);
+            checkStatement.setLong(2, userId);
+            ResultSet resultSet = checkStatement.executeQuery();
+            boolean exists = false;
+            if (resultSet.next()) {
+                exists = resultSet.getInt(1) > 0;
+            }
 
-            statement.setDouble(1, ratingV);
-            statement.setLong(2, userId);
-            statement.setLong(3, recipeId);
-            int rowsUpdated = statement.executeUpdate();
+            if (exists) {
+                // Если запись существует, обновляем
+                try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                    updateStatement.setDouble(1, ratingV);
+                    updateStatement.setLong(2, recipeId);
+                    updateStatement.setLong(3, userId);
+                    updateStatement.executeUpdate();
+                }
+            } else {
+                // Если записи нет, вставляем новую
+                try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
+                    insertStatement.setLong(1, recipeId);
+                    insertStatement.setLong(2, userId);
+                    insertStatement.setDouble(3, ratingV);
+                    insertStatement.executeUpdate();
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connectionPool.releaseConnection(connection);
         }
     }
+
 
     @Override
     public Double findRatingByRecipeId(Long recipeId) {
@@ -107,7 +131,7 @@ public final class RatingRepository implements IRatingRepository {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                return resultSet.getDouble("rating");
+                return resultSet.getDouble(1);
             }
 
         } catch (SQLException e) {

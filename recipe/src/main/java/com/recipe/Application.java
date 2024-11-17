@@ -1,6 +1,7 @@
 package com.recipe;
 
 import com.recipe.ui.ConsoleApp;
+import com.recipe.utils.PasswordHasher;
 
 public class Application {
 

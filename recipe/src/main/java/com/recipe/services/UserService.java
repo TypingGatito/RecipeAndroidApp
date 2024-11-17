@@ -7,6 +7,7 @@ import com.recipe.models.User;
 import com.recipe.models.enums.UserRole;
 import com.recipe.repositories.IRecipeRepository;
 import com.recipe.repositories.IUserRepository;
+import com.recipe.utils.PasswordHasher;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -33,12 +34,14 @@ public class UserService {
 
     public Boolean login(String email, String password) {
         User user = userRepository.findUserByEmail(email);
+
         if (user == null) return false;
 
-        return user.getPassword().equals(password);
+        return PasswordHasher.verifyPassword(password, user.getPassword());
     }
 
     public Boolean addUser(User user) {
+        user.setPassword(PasswordHasher.hashPassword(user.getPassword()));
 
         return userRepository.addUser(user);
     }

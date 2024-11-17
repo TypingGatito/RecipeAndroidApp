@@ -26,8 +26,9 @@ public final class CommentaryRepository implements ICommentaryRepository {
         List<Commentary> commentaries = new ArrayList<>();
         String query = "SELECT * FROM commentaries WHERE user_id = ?";
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = connectionPool.getConnection();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
@@ -37,6 +38,8 @@ public final class CommentaryRepository implements ICommentaryRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
         }
 
         return commentaries;
@@ -47,8 +50,9 @@ public final class CommentaryRepository implements ICommentaryRepository {
         List<Commentary> commentaries = new ArrayList<>();
         String query = "SELECT * FROM commentaries WHERE step_id = ?";
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = connectionPool.getConnection();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, stepId);
             ResultSet resultSet = statement.executeQuery();
@@ -58,6 +62,8 @@ public final class CommentaryRepository implements ICommentaryRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
         }
 
         return commentaries;
@@ -68,8 +74,9 @@ public final class CommentaryRepository implements ICommentaryRepository {
         List<Commentary> commentaries = new ArrayList<>();
         String query = "SELECT * FROM commentaries WHERE user_id = ? AND step_id = ?";
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = connectionPool.getConnection();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, userId);
             statement.setLong(2, stepId);
@@ -80,6 +87,8 @@ public final class CommentaryRepository implements ICommentaryRepository {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
         }
 
         return commentaries;

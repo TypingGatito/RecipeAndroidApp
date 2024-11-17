@@ -12,10 +12,9 @@ import lombok.RequiredArgsConstructor;
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Element
 @RequiredArgsConstructor
@@ -86,7 +85,12 @@ public final class RecipeRepository implements IRecipeRepository {
 
     @Override
     public Boolean addRecipe(Recipe recipe) {
-        String insertQuery = "INSERT INTO recipes (name, section_id, user_id, created_at, time_to_cook) VALUES (?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO recipes" +
+                " (name, section_id, user_id, created_at, time_to_cook," +
+                "calories_on_hund_g," +
+                "dose_num," +
+                "short_description)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
@@ -94,8 +98,16 @@ public final class RecipeRepository implements IRecipeRepository {
             statement.setLong(2, recipe.getSectionId());
             statement.setLong(3, recipe.getUserId());
             statement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
-
             statement.setString(5, recipe.getTimeToCook().toString());
+            statement.setInt(6, recipe.getCaloriesOnHundG());
+            statement.setInt(7, recipe.getDoseNum());
+            statement.setString(8, recipe.getShortDescription());
+
+            Duration timeToCook = recipe.getTimeToCook();
+
+            String timeToCookStr = timeToCook.toString();
+
+            statement.setObject(5, timeToCookStr);
 
             int affectedRows = statement.executeUpdate();
 
@@ -118,6 +130,7 @@ public final class RecipeRepository implements IRecipeRepository {
             connectionPool.releaseConnection(connection);
         }
     }
+
 
     @Override
     public Boolean updateRecipe(Recipe recipe) {
@@ -258,18 +271,7 @@ public final class RecipeRepository implements IRecipeRepository {
         recipe.setSectionId(resultSet.getLong("section_id"));
         recipe.setUserId(resultSet.getLong("user_id"));
         recipe.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
-
-        String timeToCookStr = resultSet.getString("time_to_cook");
-        if (timeToCookStr != null) {
-
-            String[] parts = timeToCookStr.split(":");
-            if (parts.length == 3) {
-                long hours = Long.parseLong(parts[0]);
-                long minutes = Long.parseLong(parts[1]);
-                long seconds = Long.parseLong(parts[2]);
-                recipe.setTimeToCook(Duration.ofHours(hours).plusMinutes(minutes).plusSeconds(seconds));
-            }
-        }
+        recipe.setTimeToCook(Duration.parse(resultSet.getString("time_to_cook")));
 
         return recipe;
     }

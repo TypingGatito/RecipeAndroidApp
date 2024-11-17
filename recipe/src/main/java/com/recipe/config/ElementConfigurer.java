@@ -17,6 +17,7 @@ public class ElementConfigurer {
 
     {
         sqlRepos();
+        //inMemoryRepos();
     }
 
     private void inMemoryRepos() {
