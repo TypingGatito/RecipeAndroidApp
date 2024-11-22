@@ -19,6 +19,12 @@ public class ConnectionPool {
 
     private Connection createConnection() {
         try {
+            Class.forName("org.postgresql.Driver"); // Force the driver to load
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("PostgreSQL Driver not found", e);
+        }
+
+        try {
             return DriverManager.getConnection(DatabaseConfig.get("datasource.url"),
                     DatabaseConfig.get("datasource.username"),
                     DatabaseConfig.get("datasource.password"));

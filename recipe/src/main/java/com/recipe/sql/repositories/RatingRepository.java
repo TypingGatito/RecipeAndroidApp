@@ -85,7 +85,7 @@ public final class RatingRepository implements IRatingRepository {
 
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
-            // Проверяем, существует ли запись
+
             checkStatement.setLong(1, recipeId);
             checkStatement.setLong(2, userId);
             ResultSet resultSet = checkStatement.executeQuery();
@@ -95,7 +95,7 @@ public final class RatingRepository implements IRatingRepository {
             }
 
             if (exists) {
-                // Если запись существует, обновляем
+
                 try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
                     updateStatement.setDouble(1, ratingV);
                     updateStatement.setLong(2, recipeId);
@@ -103,7 +103,7 @@ public final class RatingRepository implements IRatingRepository {
                     updateStatement.executeUpdate();
                 }
             } else {
-                // Если записи нет, вставляем новую
+
                 try (PreparedStatement insertStatement = connection.prepareStatement(insertQuery)) {
                     insertStatement.setLong(1, recipeId);
                     insertStatement.setLong(2, userId);

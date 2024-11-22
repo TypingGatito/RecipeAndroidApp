@@ -6,6 +6,7 @@
 
     <groupId>com.recipe</groupId>
     <artifactId>recipe</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,7 +16,37 @@
         <dep.version>17</dep.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId> <!-- or tomcat9-maven-plugin for newer versions -->
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>deploy</goal> <!-- deploy goal to deploy the WAR -->
+                            <goal>undeploy</goal> <!-- undeploy goal to remove the old version -->
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>tomcat</server> <!-- define the server credentials below -->
+                    <path>/recipe</path> <!-- context path of your application -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>org.postgresql</groupId>
