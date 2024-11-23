@@ -9,23 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add web&#10;&#10;&#10;Add token, add web pages">
+    <list default="true" id="864cba0f-7f10-4163-96e6-7418aa439fb9" name="Changes" comment="Add web pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/HomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/in_memory/repositories/SectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/in_memory/repositories/SectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/repositories/ISectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/repositories/ISectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/CommentaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/services/SectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/sql/repositories/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/sql/repositories/RecipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/sql/repositories/SectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/sql/repositories/SectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/validation/WebValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/validation/WebValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/elements/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/elements/navbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/RecipeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/recipe/controllers/RecipeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recipe.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/recipe.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +28,8 @@
         <option value="AnnotationType" />
         <option value="Kotlin Class" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -277,6 +265,8 @@
       <workItem from="1732288244731" duration="14561000" />
       <workItem from="1732344616497" duration="7397000" />
       <workItem from="1732371342604" duration="14618000" />
+      <workItem from="1732389272540" duration="46000" />
+      <workItem from="1732393890925" duration="5844000" />
     </task>
     <task id="LOCAL-00001" summary="Implement repositories">
       <option name="closed" value="true" />
@@ -406,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732303074033</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add web pages">
+      <option name="closed" value="true" />
+      <created>1732389308707</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1732389308707</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,6 +435,7 @@
     <MESSAGE value="Add sql repositories" />
     <MESSAGE value="Add load balancer to sql repositories" />
     <MESSAGE value="Add web&#10;&#10;&#10;Add token, add web pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add web&#10;&#10;&#10;Add token, add web pages" />
+    <MESSAGE value="Add web pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add web pages" />
   </component>
 </project>

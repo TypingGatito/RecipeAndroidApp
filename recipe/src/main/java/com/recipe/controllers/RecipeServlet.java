@@ -52,6 +52,11 @@ public class RecipeServlet extends HttpServlet {
             Recipe recipe = recipeService.findRecipeById(id);
             List<Ingredient> ingredients = ingredientService.findByRecipeId(id);
             Double rating = ratingService.findRatingByRecipeId(id);
+            Double myRating = null;
+            if (user != null) {
+                Rating myRatingR = ratingService.findRating(user.getId(), id);
+                myRating = myRatingR == null ? null : myRatingR.getRating();
+            }
             List<Step> steps = stepService.findRecipeSteps(id);
             List<Commentary> commentaries = new ArrayList<>();
             if (user != null) {
@@ -63,6 +68,7 @@ public class RecipeServlet extends HttpServlet {
             req.setAttribute("recipe", recipe);
             req.setAttribute("ingredients", ingredients);
             req.setAttribute("rating", rating);
+            req.setAttribute("myRating", myRating);
             req.setAttribute("steps", steps);
             req.setAttribute("commentaries", commentaries);
             req.getRequestDispatcher(jspPath + "recipe.jsp").forward(req, resp);

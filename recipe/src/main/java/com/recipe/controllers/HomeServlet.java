@@ -30,11 +30,14 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String jspPath = getServletContext().getInitParameter("jspPath");
 
+
+
         HttpSession session = req.getSession(false);
         String username = (session != null) ? (String) session.getAttribute("username") : null;
         String email = (session != null) ? (String) session.getAttribute("email") : null;
 
         User user = userService.findUserByEmail(email);
+
         long userId = user == null ? -1 : user.getId();
 
         req.setAttribute("username", username);
