@@ -23,4 +23,8 @@ public class SectionService {
         return sectionRepository.findAllSections();
     }
 
+    public Section getSectionById(Long id) {
+        return sectionRepository.findSectionById(id);
+    }
+
 }

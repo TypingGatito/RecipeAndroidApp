@@ -25,7 +25,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateCommentary(Commentary commentary) {
+    public static void validateCommentary(Commentary commentary) {
         if (commentary.getUserId() == null || commentary.getUserId() <= 0) {
             throw new IllegalArgumentException("Commentary userId must be positive and non-null");
         }
@@ -40,7 +40,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateIngredient(Ingredient ingredient) {
+    public static void validateIngredient(Ingredient ingredient) {
         if (ingredient.getRecipeId() == null || ingredient.getRecipeId() <= 0) {
             throw new IllegalArgumentException("Ingredient recipeId must be positive and non-null");
         }
@@ -55,7 +55,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateRating(Rating rating) {
+    public static void validateRating(Rating rating) {
         if (rating.getRecipeId() == null || rating.getRecipeId() <= 0) {
             throw new IllegalArgumentException("Rating recipeId must be positive and non-null");
         }
@@ -67,7 +67,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateRecipe(Recipe recipe) {
+    public static void validateRecipe(Recipe recipe) {
         if (recipe.getId() == null || recipe.getId() <= 0) {
             throw new IllegalArgumentException("Recipe id must be positive and non-null");
         }
@@ -97,7 +97,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateSection(Section section) {
+    public static void validateSection(Section section) {
         if (section.getId() == null || section.getId() <= 0) {
             throw new IllegalArgumentException("Section id must be positive and non-null");
         }
@@ -106,7 +106,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateStep(Step step) {
+    public static void validateStep(Step step) {
         if (step.getRecipeId() == null || step.getRecipeId() <= 0) {
             throw new IllegalArgumentException("Step recipeId must be positive and non-null");
         }
@@ -118,7 +118,7 @@ public class WebValidator {
         }
     }
 
-    private static void validateUser(User user) {
+    public static void validateUser(User user) {
         if (user.getLogin() == null || user.getLogin().isEmpty() || user.getLogin().length() > 50) {
             throw new IllegalArgumentException("User login must be between 1 and 50 characters");
         }
@@ -127,9 +127,6 @@ public class WebValidator {
         }
         if (user.getEmail() == null || user.getEmail().isEmpty() || !user.getEmail().contains("@")) {
             throw new IllegalArgumentException("User email must be a valid email address");
-        }
-        if (user.getIsActive() == null) {
-            throw new IllegalArgumentException("User isActive must be non-null");
         }
     }
 }

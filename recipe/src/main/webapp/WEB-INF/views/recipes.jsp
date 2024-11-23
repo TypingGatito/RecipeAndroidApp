@@ -14,20 +14,19 @@
 <%@ include file="elements/navbar.jsp" %>
 
 <div class="container mt-5">
-    <h1 class="text-center">Sections</h1>
+    <h1 class="text-center">${headerText} recipes</h1>
 
     <div class="container mt-5">
         <div class="row">
-            <c:forEach var="section" items="${sections}">
+            <c:forEach var="recipe" items="${recipes}">
                 <div class="col-md-4">
-                    <a href="recipes?type=section&sectionId=${section.id}" class="text-decoration-none">
+                    <a href="recipe?id=${recipe.id}" class="text-decoration-none">
                         <div class="section-box text-center">
-                            <h5 style="color: black;">${section.name}</h5>
+                            <h5 style="color: black;">${recipe.name}</h5>
                         </div>
                     </a>
                 </div>
             </c:forEach>
-
         </div>
     </div>
 
@@ -37,4 +36,3 @@
 
 </body>
 </html>
-

@@ -1,0 +1,13 @@
+.section-box {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f8f9fa;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.section-box:hover {
+    transform: scale(1.02);
+    background-color: #e9ecef;
+}

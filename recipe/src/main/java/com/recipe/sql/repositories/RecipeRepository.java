@@ -272,6 +272,9 @@ public final class RecipeRepository implements IRecipeRepository {
         recipe.setUserId(resultSet.getLong("user_id"));
         recipe.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
         recipe.setTimeToCook(Duration.parse(resultSet.getString("time_to_cook")));
+        recipe.setCaloriesOnHundG(resultSet.getInt("calories_on_hund_g"));
+        recipe.setDoseNum(resultSet.getInt("dose_num"));
+        recipe.setShortDescription(resultSet.getString("short_description"));
 
         return recipe;
     }

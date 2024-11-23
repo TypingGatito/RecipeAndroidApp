@@ -1,5 +1,6 @@
 package com.recipe.controllers;
 
+import com.recipe.utils.CookiesUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,6 +18,8 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        resp.sendRedirect("login");
+
+        CookiesUtil.deleteAuthTokenCookie(resp);
+        resp.sendRedirect("/");
     }
 }

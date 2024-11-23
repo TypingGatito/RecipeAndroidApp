@@ -12,8 +12,8 @@
     <param-value>/WEB-INF/views/</param-value>
   </context-param>
 
-  <welcome-file-list>
-    <welcome-file>/WEB-INF/views/home.jsp</welcome-file>
-  </welcome-file-list>
+<!--  <welcome-file-list>-->
+<!--    <welcome-file>/WEB-INF/views/login.jsp</welcome-file>-->
+<!--  </welcome-file-list>-->
 
 </web-app>

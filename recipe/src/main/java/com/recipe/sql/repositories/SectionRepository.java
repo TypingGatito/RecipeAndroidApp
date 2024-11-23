@@ -47,6 +47,28 @@ public final class SectionRepository implements ISectionRepository {
         return sections;
     }
 
+    @Override
+    public Section findSectionById(Long id) {
+        String query = "SELECT * FROM sections WHERE id = ?";
+
+        Section section = null;
+
+        Connection connection = connectionPool.getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                section = mapToSection(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.releaseConnection(connection);
+        }
+
+        return section;
+    }
+
     private Section mapToSection(ResultSet resultSet) throws SQLException {
         Section section = new Section();
         section.setId(resultSet.getLong("id"));

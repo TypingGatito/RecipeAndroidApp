@@ -24,7 +24,9 @@ public class CommentaryService {
     }
 
     public List<Commentary> findUserStepCommentaries(Long userId, Long stepId) {
-        return commentaryRepository.findUserStepCommentaries(userId, stepId);
+        return commentaryRepository.findUserStepCommentaries(userId, stepId)
+                .stream().sorted((c1, c2) -> c1.getOrderNum() - c2.getOrderNum())
+                .toList();
     }
 
     public Boolean addCommentary(Commentary commentary) {

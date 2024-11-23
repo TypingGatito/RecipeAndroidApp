@@ -24,4 +24,12 @@ public final class SectionRepository implements ISectionRepository {
         return inMemoryInfo.getSections();
     }
 
+    @Override
+    public Section findSectionById(Long id) {
+        return inMemoryInfo.getSections()
+                .stream()
+                .filter(s -> s.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
 }

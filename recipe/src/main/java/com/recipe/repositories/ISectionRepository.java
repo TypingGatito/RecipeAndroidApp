@@ -7,4 +7,5 @@ public interface ISectionRepository {
 
     List<Section> findAllSections();
 
+    Section findSectionById(Long id);
 }
