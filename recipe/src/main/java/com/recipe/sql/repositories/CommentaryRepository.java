@@ -8,6 +8,7 @@ import com.recipe.sql.connection.ConnectionPool;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,6 @@ public final class CommentaryRepository implements ICommentaryRepository {
         Connection connection = connectionPool.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -53,7 +53,6 @@ public final class CommentaryRepository implements ICommentaryRepository {
         Connection connection = connectionPool.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setLong(1, stepId);
             ResultSet resultSet = statement.executeQuery();
 
@@ -77,7 +76,6 @@ public final class CommentaryRepository implements ICommentaryRepository {
         Connection connection = connectionPool.getConnection();
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setLong(1, userId);
             statement.setLong(2, stepId);
             ResultSet resultSet = statement.executeQuery();
@@ -96,12 +94,12 @@ public final class CommentaryRepository implements ICommentaryRepository {
 
     @Override
     public Boolean addCommentary(Commentary commentary) {
-        String insertQuery = "INSERT INTO commentaries (user_id, step_id, text, order_num) VALUES (?, ?, ?, ?)";
         commentary.setOrderNum(getNextOrderNum(commentary.getUserId(), commentary.getStepId()) + 1);
 
+        String insertQuery = "INSERT INTO commentaries (user_id, step_id, text, order_num) VALUES (?, ?, ?, ?)";
         Connection connection = connectionPool.getConnection();
-        try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
 
+        try (PreparedStatement statement = connection.prepareStatement(insertQuery)) {
             statement.setLong(1, commentary.getUserId());
             statement.setLong(2, commentary.getStepId());
             statement.setString(3, commentary.getText());
@@ -118,14 +116,13 @@ public final class CommentaryRepository implements ICommentaryRepository {
 
     @Override
     public Boolean updateCommentary(Commentary commentary) {
-        String updateQuery = "UPDATE commentaries SET text = ? WHERE step_id = ? AND user_id = ? AND order_num = ?";
+        String updateQuery = "UPDATE commentaries SET text = ? WHERE user_id = ? AND step_id = ? AND order_num = ?";
 
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
-
             statement.setString(1, commentary.getText());
-            statement.setLong(2, commentary.getStepId());
-            statement.setLong(3, commentary.getUserId());
+            statement.setLong(2, commentary.getUserId());
+            statement.setLong(3, commentary.getStepId());
             statement.setInt(4, commentary.getOrderNum());
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
@@ -138,14 +135,13 @@ public final class CommentaryRepository implements ICommentaryRepository {
     }
 
     @Override
-    public Boolean deleteCommentary(Long stepId, Long userId, Integer orderNum) {
-        String deleteQuery = "DELETE FROM commentaries WHERE step_id = ? AND user_id = ? AND order_num = ?";
+    public Boolean deleteCommentary(Long userId, Long stepId, Integer orderNum) {
+        String deleteQuery = "DELETE FROM commentaries WHERE user_id = ? AND step_id = ? AND order_num = ?";
 
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
-
-            statement.setLong(1, stepId);
-            statement.setLong(2, userId);
+            statement.setLong(1, userId);
+            statement.setLong(2, stepId);
             statement.setInt(3, orderNum);
             int rowsDeleted = statement.executeUpdate();
             return rowsDeleted > 0;
@@ -158,11 +154,10 @@ public final class CommentaryRepository implements ICommentaryRepository {
     }
 
     private int getNextOrderNum(Long userId, Long stepId) {
-        String query = "SELECT MAX(order_num) AS max_order_num FROM commentaries WHERE user_id = ? AND step_id = ?";
+        String query = "SELECT COALESCE(MAX(order_num), 0) AS max_order_num FROM commentaries WHERE user_id = ? AND step_id = ?";
 
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-
             statement.setLong(1, userId);
             statement.setLong(2, stepId);
             ResultSet resultSet = statement.executeQuery();

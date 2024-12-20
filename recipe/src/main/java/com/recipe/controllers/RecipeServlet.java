@@ -72,6 +72,8 @@ public class RecipeServlet extends HttpServlet {
             req.setAttribute("steps", steps);
             req.setAttribute("commentaries", commentaries);
             req.getRequestDispatcher(jspPath + "recipe.jsp").forward(req, resp);
+
+            req.getSession(false).setAttribute("recipeId", id);
         } else {
             resp.sendRedirect("/");
         }

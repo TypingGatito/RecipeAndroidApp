@@ -31,9 +31,6 @@ public class RatingServlet extends HttpServlet {
         String recipeIdParam = req.getParameter("recipeId");
         String ratingParam = req.getParameter("rating");
 
-        System.out.println("Received recipeId: " + recipeIdParam);
-        System.out.println("Received rating: " + ratingParam);
-
         HttpSession session = req.getSession(false);
         String email = (session != null) ? (String) session.getAttribute("email") : null;
         User user = userService.findUserByEmail(email);

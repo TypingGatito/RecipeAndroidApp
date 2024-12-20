@@ -53,7 +53,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p><strong>Calories per 100g:</strong> ${recipe.caloriesOnHundG}</p>
-                    <p><strong>Time to cook:</strong> ${recipe.timeToCook.toHours()} hours ${(recipe.timeToCook.toMinutes() % 60)} minutes</p>
+                    <p><strong>Time to cook:</strong> ${recipe.timeToCook.toHours()}
+                        hours ${(recipe.timeToCook.toMinutes() % 60)} minutes</p>
                     <p><strong>Servings:</strong> ${recipe.doseNum}</p>
                 </div>
                 <div class="col-md-6">
@@ -93,95 +94,41 @@
                             ${step.text}
                         <h5>Commentaries:</h5>
                         <ul>
-
                             <c:forEach var="commentary" items="${commentaries}">
+                            <c:if test="${commentary.stepId == step.id}">
+                            <li>
+                                    ${commentary.text}
 
-                                <c:if test="${commentary.stepId == step.id}">
-                                    <li>
-                                            ${commentary.text}
-                                        <c:if test="${not empty sessionScope.username}">
-                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#editCommentaryModal"
-                                                    data-step-id="${step.id}"
-                                                    data-commentary-text="${commentary.text}">Edit</button>
-                                        </c:if>
-                                    </li>
+                                <c:if test="${not empty sessionScope.username}">
+                                <button class="btn btn-primary btn-delete-commentary"
+                                        data-step-id="${step.id}"
+                                        data-order-num="${commentary.orderNum}"
+                                        onclick="deleteCommentary(this)">
+                                    Delete
+                                </button>
+
                                 </c:if>
-                            </c:forEach>
+                                <c:if test="${not empty sessionScope.username}">
+                                <button class="btn btn-primary btn-edit-commentary" data-step-id="${step.id}"
+                                        data-order-num="${commentary.orderNum}" data-commentary-text="${commentary.text}" data-bs-toggle="modal"
+                                        data-bs-target="#addCommentaryModal">
+                                    Edit
+                                </button>
+                                </c:if>
+                                </c:if>
+                                </c:forEach>
+                                <c:if test="${not empty sessionScope.username}">
+                                <button class="btn btn-primary btn-add-commentary" data-step-id="${step.id}"
+                                        data-bs-toggle="modal" data-bs-target="#addCommentaryModal">
+                                    Add Commentary
+                                </button>
+                                </c:if>
                         </ul>
                     </li>
                 </c:forEach>
 
+
             </ol>
-
-            <div class="modal fade" id="addCommentaryModal" tabindex="-1" aria-labelledby="addCommentaryModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="addCommentary" method="post">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addCommentaryModalLabel">Add a Commentary</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="commentaryText" class="form-label">Commentary:</label>
-                                    <textarea class="form-control" id="commentaryText" name="text" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="hidden" name="stepId" id="addStepId">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="editCommentaryModal" tabindex="-1" aria-labelledby="editCommentaryModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="updateCommentary" method="post">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editCommentaryModalLabel">Edit Commentary</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="editCommentaryText" class="form-label">Commentary:</label>
-                                    <textarea class="form-control" id="editCommentaryText" name="text" rows="3"></textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="hidden" name="commentaryId" id="editCommentaryId">
-                                <input type="hidden" name="stepId" id="editStepId">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-
-                $('#addCommentaryModal').on('show.bs.modal', function (event) {
-                    var button = $(event.relatedTarget);
-                    var stepId = button.data('step-id');
-                    var modal = $(this);
-                    modal.find('#addStepId').val(stepId);
-                });
-
-                $('#editCommentaryModal').on('show.bs.modal', function (event) {
-                    var button = $(event.relatedTarget);
-                    var stepId = button.data('step-id');
-                    var commentaryId = button.data('commentary-id');
-                    var commentaryText = button.data('commentary-text');
-                    var modal = $(this);
-                    modal.find('#editStepId').val(stepId);
-                    modal.find('#editCommentaryId').val(commentaryId);
-                    modal.find('#editCommentaryText').val(commentaryText);
-                });
-            </script>
 
             <hr>
 
@@ -206,7 +153,8 @@
                         <div class="rating-stars">
                             <c:forEach var="i" begin="1" end="5">
                                 <label>
-                                    <input type="radio" name="rating" value="${i}" ${i == myRating ? 'checked' : ''} hidden>
+                                    <input type="radio" name="rating" value="${i}" ${i == myRating ? 'checked' : ''}
+                                           hidden>
                                     <i class="fas fa-star ${i <= myRating ? 'text-warning' : 'text-muted'}"></i>
                                 </label>
                             </c:forEach>
@@ -223,6 +171,35 @@
     </div>
 </c:if>
 
+<div class="modal fade" id="addCommentaryModal" tabindex="-1" aria-labelledby="addCommentaryModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="addCommentary" method="post" onsubmit="handleCommentarySubmit(event)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCommentaryModalLabel">Add Commentary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="addStepId" name="stepId">
+                    <input type="hidden" id="commentaryOrderNum" name="orderNum">
+                    <div class="mb-3">
+                        <label for="commentaryText" class="form-label">Your Commentary</label>
+                        <textarea class="form-control" id="commentaryText" name="commentaryText" rows="4"
+                                  required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Commentary</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.querySelectorAll('.rating-stars i').forEach(star => {
@@ -235,5 +212,80 @@
         });
     });
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const addCommentaryModal = document.getElementById("addCommentaryModal");
+
+        const addModalInstance = new bootstrap.Modal(addCommentaryModal);
+
+        document.querySelectorAll(".btn-add-commentary").forEach(button => {
+            button.addEventListener("click", event => {
+                const stepId = button.getAttribute("data-step-id");
+
+                document.getElementById("addStepId").value = stepId;
+                document.getElementById("commentaryOrderNum").value = "";
+                document.getElementById("commentaryText").value = "";
+
+                addModalInstance.show();
+            });
+        });
+
+        document.querySelectorAll(".btn-delete-commentary").forEach(button => {
+            button.addEventListener("click", event => {
+                const stepId = button.getAttribute("data-step-id");
+
+                document.getElementById("addStepId").value = stepId;
+
+                addModalInstance.show();
+            });
+        });
+
+        document.querySelectorAll(".btn-edit-commentary").forEach(button => {
+            button.addEventListener("click", event => {
+                const stepId = button.getAttribute("data-step-id");
+                const orderNum = button.getAttribute("data-order-num");
+                const text = button.getAttribute("data-commentary-text");
+
+                document.getElementById("addStepId").value = stepId;
+                document.getElementById("commentaryOrderNum").value = orderNum;
+                document.getElementById("commentaryText").value = text;
+
+                addModalInstance.show();
+            });
+        });
+
+    });
+
+</script>
+
+<script>
+    function deleteCommentary(button) {
+        var stepId = button.getAttribute("data-step-id");
+        var orderNum = button.getAttribute("data-order-num");
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "/addCommentary?stepId=" + stepId + "&stepOrderNum=" + orderNum, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                location.reload();
+            } else {
+                alert("Error deleting commentary.");
+            }
+        };
+
+        xhr.onerror = function () {
+            alert("Request failed.");
+        };
+
+        xhr.send();
+    }
+
+</script>>
+
+
 </body>
 </html>

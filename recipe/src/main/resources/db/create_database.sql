@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS commentaries (
     step_id BIGINT,
     order_num INT,
     text TEXT,
-    PRIMARY KEY(user_id, step_id),
+    PRIMARY KEY(user_id, step_id, order_num),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (step_id) REFERENCES steps(id)
 );

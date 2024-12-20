@@ -19,8 +19,8 @@ public class CommentaryService {
     @NonNull
     private ICommentaryRepository commentaryRepository;
 
-    public Boolean deleteCommentary(Long stepId, Long userId, Integer order_num) {
-        return commentaryRepository.deleteCommentary(stepId, userId, order_num);
+    public Boolean deleteCommentary(Long userId, Long stepId, Integer order_num) {
+        return commentaryRepository.deleteCommentary(userId, stepId, order_num);
     }
 
     public List<Commentary> findUserStepCommentaries(Long userId, Long stepId) {
